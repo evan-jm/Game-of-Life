@@ -1,5 +1,8 @@
 package main;
 
+/**
+ * Defines coordinates of cell as displayed on the board
+ */
 public class Cell {
     private int x;
     private int y;

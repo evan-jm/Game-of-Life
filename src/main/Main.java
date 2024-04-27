@@ -10,7 +10,14 @@ public class Main {
         board.add(1, 3);
         board.display();
         while(true) {
-            board.run();
+            try {
+                System.out.println();
+                Thread.sleep(1000);
+                board.run();
+                board.display();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

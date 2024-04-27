@@ -1,5 +1,8 @@
 package main;
 
+/**
+ * Class for maintaining board state and updating spaces
+ */
 public class Board {
     /**
      * Global matrix for storing board contents
