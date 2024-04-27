@@ -1,5 +1,5 @@
-import display.*;
-import main.*;
+package main;
+import display.Frame;
 
 public class Main {
     public static void main(String[] args) {
