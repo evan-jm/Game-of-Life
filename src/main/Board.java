@@ -68,4 +68,15 @@ public class Board {
             }
         }
     }
+
+    /**
+     * Resets board state to all 0's
+     */
+    public void reset() {
+        for(int i = 0; i < board.length; i++) {
+            for(int j = 0; j < board[0].length; j++) {
+                board[i][j] = 0;
+            }
+        }
+    }
 }

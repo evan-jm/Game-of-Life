@@ -4,8 +4,8 @@ package main;
  * Defines coordinates of cell as displayed on the board
  */
 public class Cell {
-    private int x;
-    private int y;
+    int x;
+    int y;
 
     /**
      * @param x Cell's X coordinate
@@ -14,19 +14,5 @@ public class Cell {
     public Cell(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-    /**
-     * @return Cell's X coordinate
-     */
-    public int getX() {
-        return x;
-    }
-
-    /**
-     * @return Cell's Y coordinate
-     */
-    public int getY() {
-        return y;
     }
 }
