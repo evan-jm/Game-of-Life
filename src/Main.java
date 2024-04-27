@@ -8,16 +8,5 @@ public class Main {
         Board board = new Board(rows, cols);
         Frame frame = new Frame(rows, cols, board);
         frame.run();
-        // board.display();
-        // while(true) {
-        //     try {
-        //         System.out.println();
-        //         Thread.sleep(1000);
-        //         board.run();
-        //         board.display();
-        //     } catch (InterruptedException e) {
-        //         e.printStackTrace();
-        //     }
-        // }
     }
 }
