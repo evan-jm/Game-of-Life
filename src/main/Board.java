@@ -1,4 +1,5 @@
 package main;
+import java.util.Random;
 
 /**
  * Class for maintaining board state and updating spaces
@@ -38,6 +39,18 @@ public class Board {
      */
     public void add(int x, int y) {
         board[x][y] = 1;
+    }
+
+    public void addRandomCells(int count) {
+        int x;
+        int y;
+        Random rand = new Random();
+
+        for(int i = 0; i < count; i++) {
+            x = rand.nextInt(board.length);
+            y = rand.nextInt(board[0].length);
+            add(x, y);
+        }
     }
 
     /**
