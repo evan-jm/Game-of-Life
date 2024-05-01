@@ -1,4 +1,4 @@
-package display;
+package org.example.display;
 import javax.swing.JFrame;
 
 /**

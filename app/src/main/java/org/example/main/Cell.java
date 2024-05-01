@@ -1,4 +1,4 @@
-package main;
+package org.example.main;
 
 /**
  * Defines coordinates of cell as displayed on the board
