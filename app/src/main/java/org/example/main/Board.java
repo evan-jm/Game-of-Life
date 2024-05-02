@@ -41,6 +41,10 @@ public class Board {
         board[x][y] = 1;
     }
 
+    public int get(int x, int y) {
+        return board[x][y];
+    }
+
     public void addRandomCells(int count) {
         int x;
         int y;
