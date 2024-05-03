@@ -19,10 +19,4 @@ public class BoardTest {
         board.add(x, y);
         assertEquals(1, board.get(x, y));
     }
-
-    @Test
-    public void falseTest() {
-        int x = 0, y = 1;
-        assertEquals(x, y);
-    }
 }
