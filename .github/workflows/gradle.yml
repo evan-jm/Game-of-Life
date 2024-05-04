@@ -1,4 +1,4 @@
-name: Java CI with Gradle
+name: Gradle Test
 
 on:
   push:
@@ -26,9 +26,6 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
-
-    - name: Test with Gradle Wrapper
-      run: ./gradlew test
 
   dependency-submission:
 
