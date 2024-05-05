@@ -10,3 +10,10 @@ build
 
 # Ignore VSCode settings
 .vscode
+
+# Ignore NVim settings
+.project
+.settings
+app/.classpath
+app/.project
+app/.settings
