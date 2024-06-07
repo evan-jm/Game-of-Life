@@ -1,22 +1,13 @@
 package org.example;
 
-import org.example.main.Board;
+import org.example.display.Frame;
 
 public class Main {
     public static void main(String[] args) {
         int rows = 10;
         int cols = 10;
-        Board board = new Board(rows, cols);
-        board.addRandomCells(50);
-        while (true) {
-            try {
-                board.display();
-                Thread.sleep(1000);
-                board.run(10);
-                System.out.println();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+
+        Frame frame = new Frame(rows, cols);
+        frame.run();
     }
 }
