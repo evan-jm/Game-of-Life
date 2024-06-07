@@ -1,4 +1,5 @@
 package org.example;
+
 import org.example.main.Board;
 
 public class Main {
@@ -7,11 +8,11 @@ public class Main {
         int cols = 10;
         Board board = new Board(rows, cols);
         board.addRandomCells(50);
-        while(true) {
+        while (true) {
             try {
                 board.display();
                 Thread.sleep(1000);
-                board.run();
+                board.run(10);
                 System.out.println();
             } catch (InterruptedException e) {
                 e.printStackTrace();

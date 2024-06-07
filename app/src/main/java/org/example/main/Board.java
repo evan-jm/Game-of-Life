@@ -1,42 +1,24 @@
 package org.example.main;
+
 import java.util.Random;
 
-/**
- * Class for maintaining board state and updating spaces
- */
 public class Board {
-    /**
-     * Global matrix for storing board contents
-     */
     private int[][] board;
 
-    /**
-     * Constructs Board based on input number of rows and columns
-     * @param rows Number of rows in Board
-     * @param cols Number of columns in Board
-     */
     public Board(int rows, int cols) {
         board = new int[rows][cols];
     }
 
-    /**
-     * Displays current board in terminal
-     */
     public void display() {
-        for(int i = 0; i < board.length; i++) {
+        for (int i = 0; i < board.length; i++) {
             System.out.print("| ");
-            for(int j = 0; j < board[0].length; j++) {
-                System.out.print(board[i][j] + " ");
+            for (int j = 0; j < board[0].length; j++) {
+                System.out.print(board[i][j] == 1 ? "█ " : "  ");
             }
             System.out.println("|");
         }
     }
 
-    /**
-     * Adds a cell to the board at the coordinates of the cell
-     * @param x Cell's X coordinate
-     * @param y Cell's Y coordinate
-     */
     public void add(int x, int y) {
         board[x][y] = 1;
     }
@@ -50,48 +32,56 @@ public class Board {
         int y;
         Random rand = new Random();
 
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             x = rand.nextInt(board.length);
             y = rand.nextInt(board[0].length);
             add(x, y);
         }
     }
 
-    /**
-     * Calculate each cells neighbor count and determine if it lives or dies
-     * @param x Cell's X coordinate
-     * @param y Cell's Y coordinate
-     */
-    public void transition(int x, int y) {
-        int neighbors = 0;
-        if(x >= 1 && x <= board.length - 1 && y >= 1 && y <= board[0].length - 1) {
-            for(int i = x - 1; i < x + 1; i++) {
-                for(int j = y - 1; j < y + 1; j++) {
-                    if(board[i][j] == 1) neighbors++;
+    public void transition() {
+        int[][] newBoard = new int[board.length][board[0].length];
+
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                int neighbors = countNeighbors(i, j);
+
+                if (board[i][j] == 1 && (neighbors < 2 || neighbors > 3)) {
+                    newBoard[i][j] = 0; // Cell dies
+                } else if (board[i][j] == 0 && neighbors == 3) {
+                    newBoard[i][j] = 1; // Cell reproduces
+                } else {
+                    newBoard[i][j] = board[i][j]; // Cell remains the same
                 }
             }
         }
-        if(neighbors < 2 || neighbors > 3) board[x][y] = 2;
-        if(board[x][y] == 2 && neighbors == 3) board[x][y] = 1;
+
+        board = newBoard;
     }
 
-    /**
-     * Run controller for continually transitioning cell status repeatedly
-     */
-    public void run() {
-        for(int i = 0; i < board.length; i++) {
-            for(int j = 0; j < board[0].length; j++) {
-                if(board[i][j] != 0) transition(i, j);
+    private int countNeighbors(int x, int y) {
+        int count = 0;
+        for (int i = x - 1; i <= x + 1; i++) {
+            for (int j = y - 1; j <= y + 1; j++) {
+                if (i >= 0 && i < board.length && j >= 0 && j < board[0].length && !(i == x && j == y)) {
+                    count += board[i][j];
+                }
             }
+        }
+        return count;
+    }
+
+    public void run(int generations) {
+        for (int i = 0; i < generations; i++) {
+            display();
+            System.out.println("--------------------");
+            transition();
         }
     }
 
-    /**
-     * Resets board state to all 0's
-     */
     public void reset() {
-        for(int i = 0; i < board.length; i++) {
-            for(int j = 0; j < board[0].length; j++) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
                 board[i][j] = 0;
             }
         }
