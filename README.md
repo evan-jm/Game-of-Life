@@ -19,7 +19,10 @@ Java Development Kit (JDK) installed on your system.
 
 ### Installation and Running
 
-Clone this repository:
+**Replace VERSION_NUMBER with correct version number from your download (for example: 1.0)**
+
+- Download Game-of-Life_VERSION_NUMBER.jar from releases
+- Run `java -jar Game-of-Life_VERSION_NUMBER.jar` from terminal
 
 ## Usage
 
